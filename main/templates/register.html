@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DigtlMart - Register</title>
+
+    <link rel="stylesheet" href="{% static "css/utils.css" %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+    />
+
+    <link rel="stylesheet" href="{% static "css/style.css" %}" /> <link
+    rel="stylesheet" href="{% static "css/home.css" %}"> <link rel="stylesheet"
+    href="{% static "css/login.css" %}">
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .black {
+        color: black !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <div id="Overlay"></div>
+
+      <form class="login" method="POST">
+        {% csrf_token %}
+        <h2>Welcome, User!</h2>
+        <p>Please Signup</p>
+        <input
+          type="email"
+          name="email"
+          class="black"
+          placeholder="joe@gmail.com"
+          required
+        />
+        <input
+          class="black"
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <input type="submit" value="Register" />
+        <div class="links">
+          <a href="/">Back to Home</a>
+          <a href="/login">Log in</a>
+        </div>
+      </form>
+
+      <script>
+        {% if messages %}
+            {% for message in messages %}
+                alert("{{ message }}");
+            {% endfor %}
+        {% endif %}
+      </script>
+    </main>
+
+    <script></script>
+  </body>
+</html>

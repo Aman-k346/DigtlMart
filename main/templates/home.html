@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+DigtlMart
+{% endblock title %}
+{% block head %}
+<style>
+
+    main .btn{
+        background: #097ec2;
+        color: var(--white);
+        font-weight: 600;
+        padding: 1rem 2rem;
+        border-radius: 12px;
+        box-shadow: #097ec2 0px 0px 0px 0px;
+        margin-inline: .5rem;
+        transition: .2s all;
+        max-width: 200px;
+        text-align: center;
+        display:block;
+    }
+</style>
+{% endblock head %}
+
+{% block content %}
+
+<div id="Overlay"></div>
+<!-- LANDING -->
+<section id="Landing">
+    <div class="wrapper">
+        <div class="text">
+            <h1 class="Title">DigtlMart</h1>
+            <h2>Providing The Best Digital Material Packages Required For Content Creation.</h2>
+
+        </div>
+    </div>
+</section>
+
+<!-- LATEST RELEASES -->
+<section id="LatestReleases">
+    <div class="wrapper">
+        <div class="Title">
+            <h1>Latest Releases</h1>
+        </div>
+        <div class="Cards">
+
+            <a class="Card" href="/bundle/video">
+                <div class="Thumbnail">
+                    <img src="{% static "/images/video-editing.webp" %}" alt="Bundle Video Editing" />
+                </div>
+                <p class="Desc">Video Editing Bundle</p>
+                <direct href="/bundle/video" class="btn">View Product</direct>
+            </a>
+
+            
+            {% comment %} <a class="Card" href="/">
+                <div class="Thumbnail">
+                    <img src="{% static "images/comingsoon.jpg" %}" alt="Tears Of Steel" />
+                </div>
+                <p class="Desc">Coming Soon!</p>
+            </a> {% endcomment %}
+            <!-- <a class="Card" href="/">
+                <div class="Thumbnail">
+                    <img src="/Assets/images/tearsOfSteel.jpg" alt="Tears Of Steel" />
+                </div>
+                <p class="Desc">Tears Of Steel</p>
+            </a>
+           -->
+          
+
+        </div>
+</section>
+{% endblock content %}

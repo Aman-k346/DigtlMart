@@ -1,0 +1,73 @@
+{% extends "base.html" %} {% load static %} {% block title %} DigtlMart - Refund {% endblock title %} 
+{% block head %}
+
+<style>
+  main #Landing {
+    height: fit-content !important;
+  }
+  main #Landing .wrapper .text h2 {
+    margin: 0 !important;
+  }
+
+  main #Landing .wrapper .text {
+    margin-top: 4vh;
+  }
+  .termspara {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding-inline: 1rem;
+  }
+
+  .termspara > * {
+    margin-block: 1.25rem;
+    line-height: 2.5ch;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  hr {
+    width: 100%;
+  }
+
+  main li {
+    margin-left: 1.25rem;
+  }
+</style>
+{% endblock head %} 
+{% block content %}
+
+<div id="Overlay"></div>
+<!-- LANDING -->
+<section id="Landing">
+  <div class="wrapper">
+    <div class="text">
+      <h2>Refund Policy</h2>
+      <hr />
+    </div>
+  </div>
+</section>
+
+<!-- Note -->
+
+<section id="Note">
+  <div class="termspara px-3 py-5">
+    <style>
+      .termdirection {
+        display: none !important;
+      }
+    </style>
+
+    <h3>1. Cancellation</h3>
+
+    <p>All sales are final and no refund will be issued.</p>
+
+    <h3>2. Fee Changes</h3>
+
+    <p>
+      We may, from time to time, make changes to the purchasing fees and will
+      communicate any price changes to you in accordance with applicable law.
+    </p>
+  </div>
+</section>
+
+{% endblock content %}

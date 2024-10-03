@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}DigtlMart{% endblock title %}</title>
+
+    <link rel="stylesheet" href="{% static "css/utils.css" %}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
+
+    <link rel="stylesheet" href="{% static "css/style.css" %}" />
+    <link rel="stylesheet" href="{% static "css/home.css" %}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    {% block head %}{% endblock head %}
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <section class="Announcements">
+            <div id="AnnouncementsBar" class="splide" aria-label="Announcements-bar">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">Act Fast!!</li>
+                        <li class="splide__slide">
+                            Editors outside India can contact us for manual payment
+                        </li>
+                        <li class="splide__slide">Purchased by 250+ Editors 🤝</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <nav>
+            <ul class="LeftMenu">
+                <li class="active"><a href="/">Home</a></li>
+                <div class="Hamburger">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+            </ul>
+            <h1 class="Logo">digtlmart</h1>
+            <ul class="RightMenu Icons">
+
+
+                <li class="profile">
+                    <!-- <a href="/profile"><box-icon name="user" color="white"></box-icon></a> -->
+                    <div class="Group">
+                        {% if request.user.is_authenticated %}
+                        <span>Logged in as {{ request.user.username }}</span> |
+                        <a class="btn" href="/logout">Logout</a> 
+                    {% else %}
+                        <a class="btn" href="/login">Login</a> <span>|</span> <a class="btn" href="/register">Signup</a>
+                    {% endif %}
+                    
+                    </div>
+                </li>
+                <li>
+                    <a href="#LatestReleases"><box-icon name="search" color="white"></box-icon></a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="Sidebar">
+            <ul class="TopMenu">
+                <div class="wrapper">
+                    <li class="active"><a href="/">Home</a></li>
+                </div>
+                <ul class="BottomMenu">
+                    {% if request.user.is_authenticated %}
+                    <li class="profile">
+                        <a href="#"><box-icon name="user" color="white"></box-icon>
+                            <span>{{ request.user.username }}</span></a>  <!-- Link to user profile -->
+                    </li>
+                    <li class="profile">
+                        <a href="{% url 'Logout' %}"><box-icon name="log-out" color="white"></box-icon>
+                            <span>Logout</span></a>
+                    </li>
+                {% else %}
+                    <li class="profile">
+                        <a href="/login"><box-icon name="user" color="white"></box-icon>
+                            <span>Log In</span></a>
+                    </li>
+                    <li class="profile">
+                        <a href="/register"><box-icon name="user" color="white"></box-icon>
+                            <span>Register</span></a>
+                    </li>
+                {% endif %}
+            
+                </ul>
+            </ul>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+     {% block content %}{% endblock content %}
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="wrapper">
+           
+
+            <div class="Bottom">
+                <ul>
+                    <p>
+                        © 2024, digtlmart
+                    </p>
+                    <li>
+                        <a href="/refund">Refund policy</a>
+                    </li>
+                    <li>
+                        <a href="/privacy">Privacy policy</a>
+                    </li>
+                    <li>
+                        <a href="/terms">Terms of service</a>
+                    </li>
+                   
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="{% static "js/scroll-lock.min.js" %}"></script>
+
+    <script src="{% static "js/script.js" %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var faqQuestions = document.querySelectorAll('.faq_question');
+
+            Array.prototype.forEach.call(faqQuestions, function (question) {
+                question.addEventListener('click', function () {
+                    var faq = question.closest('.faq');
+                    var answerContainer = faq.querySelector('.faq_answer_container');
+                    let RightArrow = faq.querySelector(".Right");
+                    var answer = faq.querySelector('.faq_answer');
+
+                    if (faq.classList.contains('open')) {
+                        answerContainer.style.height = '0px';
+                        faq.classList.remove('open');
+                        answerContainer.style.marginBottom = '0';
+                        RightArrow.style.transform = 'rotate(0deg)';
+                        console.log(RightArrow.style.transform);
+
+                    } else {
+                        var newHeight = answer.offsetHeight + 'px';
+                        answerContainer.style.height = newHeight;
+                        answerContainer.style.marginBlock = '0.5rem';
+                        faq.classList.add('open');
+                        RightArrow.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>

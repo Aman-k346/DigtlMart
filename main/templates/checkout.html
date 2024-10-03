@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% load static %} {% block title %} Checkout {%endblock title %}
+{% block head %}
+  <link rel="stylesheet" href="{% static "css/checkout.css" %}">
+{% endblock head %}
+ {% block content %}
+
+<!-- MAIN -->
+<div id="Overlay"></div>
+<!-- LANDING -->
+<section id="Landing">
+  <div class="wrapper">
+    <div class="text">
+      <h2 style="text-align: center; font-weight: 800">Secure Checkout</h2>
+      <p style="text-align: center; padding-inline: 1rem; line-height: 2ch">
+        Encrypted and secure payments with 24x7 support
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="Cart">
+  <div class="wrapper">
+    <div class="Top">
+      <h2>1. Check your order</h2>
+      <li><span>✓ Video Editing Bundle</span><span>100₹</span></li>
+    </div>
+    <div class="Bottom">
+      <h2>2. Payment (UPI)</h2>
+      <li><span>Total</span><span>100₹</span></li>
+      <div class="Flat">
+        <div class="straight">
+          <button class="button">Pay Now</button>
+          <p class="texty">
+            <box-icon
+              name="lock-alt"
+              type="solid"
+              class="lock"
+              color="#2ade00"
+            ></box-icon>
+            Encrypted and Secure Payments
+          </p>
+        </div>
+        <p class="texty-lh">
+          By clicking the button, you agree to our Terms & Conditions and
+          Privacy Policy
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

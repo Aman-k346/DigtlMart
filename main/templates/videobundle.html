@@ -1,0 +1,407 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+DigtlMart - Video Bundle
+{% endblock title %}
+{% block head %}
+
+<style>
+  .Vimeo-player{
+    width:95vw;
+    aspect-ratio:16/9;
+  }
+        </style>
+{% endblock head %}
+
+{% block content %}
+  <!-- HERO -->
+  <section id="Hero">
+    <div class="wrapper">
+      <div class="text">
+        <h1 class="Title">WORLD'S BIGGEST</h1>
+        <h2>Video Editing Bundle</h2>
+      </div>
+
+      <div class="image">
+        <img src="{% static "/images/hero.webp" %}" alt="hero image" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="About">
+    <div class="wrapper">
+      <div class="Title">
+        <h1>1,00,000+</h1>
+        <h2 class="Subtitle">Transitions, SFX, Overlays</h2>
+      </div>
+      <div class="Desc">
+        <h2>
+          Get Over 70 GB Of Video Editing Assests, Including, Transitions,
+          Overlays, Fonts, LUTS, FX, Premade Templates, And Premium Software
+          Like Premiere Pro, After Effects, And Six Additional Adobe
+          Products. On Top Of That, Get A Full-Fledged Video Editing Course
+          To Get You Started.
+        </h2>
+      </div>
+      <img src="{% static "icons/ArrowAbout.svg" %}" alt="Arrow" class="Arrow">
+      <div class="Features">
+        <ul>
+          <li>
+            <img src="{% static "icons/lifetime_access.svg" %}" alt="Lifetime Access" />
+            <h3>Lifetime Access</h3>
+          </li>
+          <li>
+            <img src="{% static "icons/onetimepay.svg" %}" alt="One Time Pay" />
+            <h3>One Time Pay</h3>
+          </li>
+          <li>
+            <img src="{% static "icons/secure.svg" %}" alt="Secure" />
+            <h3>100% Risk Free</h3>
+          </li>
+        </ul>
+      </div>
+      <div class="Bottom">
+        <a class="button" href="/checkout">Buy now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="Testimonial">
+    <div class="wrapper">
+      <div class="Title">
+        <h3>MADE FOR</h3>
+        <h1>WORTHY EDITORS</h1>
+      </div>
+      <div class="division">
+        <img src="{% static "icons/ArrowCut.svg" %}" alt="Arrow" />
+      </div>
+      <div class="Heading">
+        <h2>WHAT EDITORS SAID-</h2>
+      </div>
+      <div class="TestimonialSlider">
+        <div class="splide" id="TestimonialBar" aria-label="Testimonial-bar">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li class="splide__slide">
+                <div class="container">
+                  <div class="Top">
+                    <p>Vansh</p>
+                    <div class="reviews">
+                      <i class="bx bxs-star Active"></i><i class="bx bxs-star Active"></i><i
+                        class="bx bxs-star Active"></i><i class="bx bxs-star Active"></i><i
+                        class="bx bxs-star Active"></i>
+                    </div>
+                  </div>
+                  <div class="Bottom">
+                    <p>
+                      "So much assets! Loved it!
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li class="splide__slide">
+                <div class="container">
+                  <div class="Top">
+                    <p>Gopal</p>
+                    <div class="reviews">
+                      <i class="bx bxs-star Active"></i><i class="bx bxs-star Active"></i><i
+                        class="bx bxs-star Active"></i><i class="bx bxs-star Active"></i><i
+                        class="bx bxs-star Active"></i>
+                    </div>
+                  </div>
+                  <div class="Bottom">
+                    <p>
+                      How you managed to provide such a bundle in low price?
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li class="splide__slide">
+                <div class="container">
+                  <div class="Top">
+                    <p>Dhruv</p>
+                    <div class="reviews">
+                      <i class="bx bxs-star Active"></i><i class="bx bxs-star Active"></i><i
+                        class="bx bxs-star Active"></i><i class="bx bxs-star Active"></i><i
+                        class="bx bxs-star Active"></i>
+                    </div>
+                  </div>
+                  <div class="Bottom">
+                    <p>
+                      Truly the world's biggest no doubt
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li class="splide__slide">
+                <div class="container">
+                  <div class="Top">
+                    <p>Aditya</p>
+                    <div class="reviews">
+                      <i class="bx bxs-star Active"></i><i class="bx bxs-star Active"></i><i
+                        class="bx bxs-star Active"></i><i class="bx bxs-star Active"></i><i
+                        class="bx bxs-star Active"></i>
+                    </div>
+                  </div>
+                  <div class="Bottom">
+                    <p>
+                     
+            This bundle is a must-have for any serious video editor! Highly recommend!
+        
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li class="splide__slide">
+                <div class="container">
+                  <div class="Top">
+                    <p>Ar</p>
+                    <div class="reviews">
+                      <i class="bx bxs-star Active"></i><i class="bx bxs-star Active"></i><i
+                        class="bx bxs-star Active"></i><i class="bx bxs-star Active"></i><i
+                        class="bx bxs-star Active"></i>
+                    </div>
+                  </div>
+                  <div class="Bottom">
+                    <p>
+                      "Cool"
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="Products">
+    <div class="wrapper">
+      <div class="Title">
+        <h1>HERE'S WHAT YOU'LL GET INSIDE</h1>
+        <img src="{% static "icons/ProductArrow.svg" %}" alt="ProductArrow" />
+      </div>
+      <div class="ProductList">
+        <ul class="List">
+          <li>8000+ Transitions Pack</li>
+          <li>Fire Spark Overlays</li>
+          <li>Rain Overlays</li>
+          <li>Wedding Invitation Pack</li>
+          <li>Dust & Snow Overlays</li>
+          <li>Smoke Overlays</li>
+          <li>Light Leak Overlays</li>
+          <li>Lens & Bokeh Overlays</li>
+          <li>100+ After Effect Plugins</li>
+          <li>Adobe CC Collection</li>
+          <li>Wedding Title Animation Pack</li>
+          <li>Logo Animation Pack</li>
+          <li>100+ Background Animation Pack</li>
+          <li>1500+ Lower Third Pack</li>
+          <li>100+ Callout Motion Graphics</li>
+          <li>200+ Animated Emoji Pack</li>
+          <li>3000+ Sound Effect Pack</li>
+          <li>200+ Cinematic LUTS</li>
+          <li>500+ Stock Videos Pack</li>
+          <li>Viral Meme Pack</li>
+          <li>Camera Rig View Overlays Pack</li>
+          <li>1000+ Royalty Free Music</li>
+          <li>Animated Title Pack</li>
+          <li>Motion Graphics Pack</li>
+          <li>Glitch Effect Pack</li>
+          <li>10,000+ Fonts Collection</li>
+          <li>4k Cinematic Film Grain</li>
+          <li>2000+ FX Presets Pack</li>
+          <li>Youtube Essential Pack</li>
+          <li>Video Editing Course</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BONUS -->
+  <section id="Bonus">
+    <div class="wrapper">
+      <div class="Title">
+        <h1>FREE BONUSES ALONG WITH THIS BUNDLE-</h1>
+      </div>
+      <div class="BonusList">
+        <ul class="List">
+          <li>EXCEL SHEETS FOR EVERY BUSINESS USE</li>
+          <li>3,000+ MOTIVATIONAL REELS</li>
+          <li>COURSES FOR FREE</li>
+          <li>1,500+ CANVA POSTS BUNDLE</li>
+          <li>1,000+ SOCIAL POSTERS</li>
+          <li>675GB+ GRAPHICS BUNDLE</li>
+        </ul>
+      </div>
+      <div class="Button">
+        <a class="button" href="/checkout">Buy now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTANT -->
+  <section id="Instant">
+    <div class="wrapper">
+      <img src="{% static "icons/thunderBolt.svg" %}" alt="Thunder" />
+      <div class="text">
+        <h2>Provided to you</h2>
+        <h1>Instantly!!</h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO DEMO -->
+  <section id="VideoDemo">
+    <div class="wrapper">
+      {% comment %} <video id="my-video" controls preload="auto" poster="images/TearsOfSteel.jpg" data-setup="{}">
+        <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" type="video/mp4" />
+        <p class="vjs-no-js">
+          To view this video please enable JavaScript, and consider
+          upgrading to a web browser that
+          <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+      </video> {% endcomment %}
+
+      <iframe title="vimeo-player" class="Vimeo-player" src="https://player.vimeo.com/video/1015287531?h=f5fd4e9c2a"  frameborder="0"    allowfullscreen></iframe>
+     
+    </div>
+  </section>
+
+  <!-- TARGET AUDIENCE -->
+  <section id="TargetAudience">
+    <div class="wrapper">
+      <div class="text">
+        <h1>BEST FOR:</h1>
+      </div>
+      <div class="image">
+        <ul class="List">
+          <li>
+            <div class="cover">
+              <img src="{% static "icons/instagram.svg" %}" alt="Instagram" />
+              <div>Content Creator</div>
+            </div>
+          </li>
+          <li>
+            <div class="cover">
+              <img src="{% static "icons/youtube.svg" %}" alt="Youtube" />
+              <div>Youtuber</div>
+            </div>
+          </li>
+          <li>
+            <div class="cover">
+              <img src="{% static "icons/shortfilm.svg" %}" alt="Short Film Creator" />
+              <div>Short Film Creator</div>
+            </div>
+          </li>
+
+          <li>
+            <div class="cover">
+              <img src="{% static "icons/wedding.svg" %}" alt="Wedding Videographer" />
+              <div>Wedding Videographer</div>
+            </div>
+          </li>
+
+          <li>
+            <div class="cover">
+              <img src="{% static "icons/freelancer.svg" %}" alt="Freelancer" />
+              <div>Freelancer</div>
+            </div>
+          </li>
+          <li>
+            <div class="cover">
+              <img src="{% static "icons/influencer.svg" %}" alt="Influencer" />
+              <div>Influencer</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPS -->
+  <section id="Apps">
+    <div class="wrapper">
+      <div class="text">
+        <h1 class="Title">CAN BE USED ON NEARLY ANY SOFTWARE</h1>
+      </div>
+      <div class="image">
+        <ul class="List">
+          <li>
+            <div class="cover">
+              <img src="{% static "icons/apps/premiere.png" %}" alt="Adobe Premiere Pro" />
+            </div>
+          </li>
+          <li>
+            <div class="cover">
+              <img src="{% static "icons/apps/AfterEffects.png" %}" alt="Adobe After Effects" />
+            </div>
+          </li>
+          <li>
+            <div class="cover">
+              <img src="{% static "icons/apps/Avid.png" %}" alt="Avid" />
+            </div>
+          </li>
+          <li>
+            <div class="cover">
+              <img src="{% static "icons/apps/capcut.jpg" %}" alt="Capcut" />
+            </div>
+          </li>
+          <li>
+            <div class="cover">
+              <img src="{% static "icons/apps/davinciResolve.png" %}" alt="Davinci Resolve" />
+            </div>
+          </li>
+          <li>
+            <div class="cover">
+              <img src="{% static "icons/apps/filmora.png" %}" alt="Filmora" />
+            </div>
+          </li>
+          <li>
+            <div class="cover">
+              <img src="{% static "icons/apps/FinalCut.png" %}" alt="Final Cut" />
+            </div>
+          </li>
+          <li>
+            <div class="cover">
+              <img src="{% static "icons/apps/pinnaclestudio.png" %}" alt="Pinnacle Studio" />
+            </div>
+          </li>
+          <li>
+            <div class="cover">
+              <img src="{% static "icons/apps/PowerDirector.png" %}" alt="PowerDirector" />
+            </div>
+          </li>
+          <li>
+            <div class="cover">
+              <img src="{% static "icons/apps/vn.png" %}" alt="VN" />
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="text mt-5">
+      </div>
+      <div class="Text">
+        <div class="First">
+          <h1 class="Title">WHAT ELSE DO YOU WANT NOW?</h1>
+          <h2>
+            This single decision could potentially save you thousands of
+            hours, Bunch of money & Uncountable efforts.
+          </h2>
+        </div>
+        <div class="Second">
+          <h1 class="Title">THE CHANCE IS HERE</h1>
+          <h1 class="Title">THE CHOICE IS YOURS</h1>
+          <h1 class="Title red">BE A WORTHY EDITOR!!</h1>
+          <a class="button" href="/checkout">Buy now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+{% endblock content %}
