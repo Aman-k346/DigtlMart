@@ -66,7 +66,7 @@
         <div id="Sidebar">
             <ul class="TopMenu">
                 <div class="wrapper">
-                    <li class="active"><a href="/">Home</a></li>
+                    <li class="active" onclick="window.location.href='{% url "home" %}'"><a href="/">Home</a></li>
                 </div>
                 <ul class="BottomMenu">
                     {% if request.user.is_authenticated %}
@@ -74,22 +74,22 @@
                         <a href="#"><box-icon name="user" color="white"></box-icon>
                             <span>{{ request.user.username }}</span></a>  <!-- Link to user profile -->
                     </li>
-                    <li class="profile">
+                    <li class="profile" onclick="window.location.href='{% url "Logout" %}'" >
                         <a href="{% url 'Logout' %}"><box-icon name="log-out" color="white"></box-icon>
                             <span>Logout</span></a>
                     </li>
                 {% else %}
-                    <li class="profile">
+                    <li class="profile" onclick="window.location.href='{% url "Login" %}'">
                         <a href="/login"><box-icon name="user" color="white"></box-icon>
                             <span>Log In</span></a>
                     </li>
-                    <li class="profile">
+                    <li class="profile" onclick="window.location.href='{% url "Register" %}'">
                         <a href="/register"><box-icon name="user" color="white"></box-icon>
                             <span>Register</span></a>
                     </li>
                 {% endif %}
             
-                </ul>
+            </ul>
             </ul>
         </div>
     </header>
