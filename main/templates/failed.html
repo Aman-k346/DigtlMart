@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% load static %} {% block title %} Checkout {%endblock title %}
+{% block head %}
+  <link rel="stylesheet" href="{% static "css/checkout.css" %}">
+  <style>
+    section a:hover{
+      color: #1fc209 !important;
+    }
+    
+  </style>
+{% endblock head %}
+ {% block content %}
+
+<!-- MAIN -->
+<div id="Overlay"></div>
+<!-- LANDING -->
+<section id="Landing">
+  <div class="wrapper">
+    <div class="text">
+      <h2 style="text-align: center; font-weight: 800">{{ reason }}</h2>
+      <div style="text-align: center;display: flex;flex-direction: column;text-decoration: underline;">
+        <a href="/" style="margin-bottom: 0.25rem">Go Back To Home</a>
+        <a href="/checkout">Or Retry</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock content %}

@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,16 +25,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^#7rc)8vkc%0*8!5^jw3k0t5h7+2q3ujxuz^7&s=ksex3ah_tz'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+# ALLOWED_HOSTS = [
+#     'localhost',
+#     '127.0.0.1',
+#     'digtlmart.in',
+#     'digtlmart.com',
+#     ''
+# ]
 ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    'digtlmart.in',
-    'digtlmart.com',
+    '*'
 ]
 
 SESSION_COOKIE_SECURE = True
@@ -38,6 +46,7 @@ CSRF_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = [
    'https://digtlmart.in',
    'https://digtlmart.com',
+   'https://2bd7-103-5-134-168.ngrok-free.app'
 ]
 
 # Application definition
@@ -145,3 +154,57 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+os.makedirs( os.path.join(BASE_DIR, 'logs'), exist_ok=True)
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s %(levelname)s %(name)s %(message)s'
+        },
+        'file_format': {
+            'format': '%(asctime)s-%(levelname)s-%(name)s-%(lineno)d-%(funcName)s-%(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'standard',
+            'filters': [],
+        },
+        "server_file": {
+            "level": "INFO",
+            "class": "logging.handlers.RotatingFileHandler",
+            'formatter': 'standard',
+            "filename": os.path.join(BASE_DIR, 'logs', 'server.log'),
+        },
+        "payment": {
+            "level": "INFO",
+            "class": "logging.handlers.RotatingFileHandler",
+            'formatter': 'file_format',
+            "filename": os.path.join(BASE_DIR, 'logs', 'payment.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'server_file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'payment': {
+            'handlers': ['payment'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+    
+}
+
+PHONEPE_MERCHANT_ID = env('PHONEPE_MERCHANT_ID')
+PHONEPE_MERCHANT_KEY = env('PHONEPE_MERCHANT_KEY')
+PHONEPE_INITIATE_PAYMENT_URL = env('PHONEPE_INITIATE_PAYMENT_URL')
+SALT_INDEX = env('SALT_INDEX')
+CALLBACK_URL = env('CALLBACK_URL')
+PHONEPE_REDIRECT_URL = env('PHONEPE_REDIRECT_URL')

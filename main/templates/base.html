@@ -14,6 +14,17 @@
     <link rel="stylesheet" href="{% static "css/home.css" %}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     {% block head %}{% endblock head %}
+    <style>
+        .Limit{
+            display: inline-block;
+            max-width: 150px;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+        
+
+        }
+    </style>
 </head>
 
 <body>
@@ -49,7 +60,7 @@
                     <!-- <a href="/profile"><box-icon name="user" color="white"></box-icon></a> -->
                     <div class="Group">
                         {% if request.user.is_authenticated %}
-                        <span>Logged in as {{ request.user.username }}</span> |
+                        <span class="Limit">{{ request.user.username }}</span> |
                         <a class="btn" href="/logout">Logout</a> 
                     {% else %}
                         <a class="btn" href="/login">Login</a> <span>|</span> <a class="btn" href="/register">Signup</a>

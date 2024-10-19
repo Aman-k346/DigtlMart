@@ -27,26 +27,31 @@
     <div class="Bottom">
       <h2>2. Payment (UPI)</h2>
       <li><span>Total</span><span>149₹</span></li>
-      <div class="Flat">
-        <div class="straight">
-          <button class="button">Pay Now</button>
-          <p class="texty">
-            <box-icon
-              name="lock-alt"
-              type="solid"
-              class="lock"
-              color="#2ade00"
-            ></box-icon>
-            Encrypted and Secure Payments
+      <form method="post" action="/payment-initiate">
+        {% csrf_token %}
+        <div class="Flat">
+          <div class="straight">
+            <button type="submit" class="button">Pay Now</button>
+            <p class="texty">
+              <box-icon
+                name="lock-alt"
+                type="solid"
+                class="lock"
+                color="#2ade00"
+              ></box-icon>
+              Encrypted and Secure Payments
+            </p>
+          </div>
+          <p class="texty-lh">
+            By clicking the button, you agree to our Terms & Conditions and
+            Privacy Policy
           </p>
         </div>
-        <p class="texty-lh">
-          By clicking the button, you agree to our Terms & Conditions and
-          Privacy Policy
-        </p>
-      </div>
+      </form>
+
     </div>
   </div>
+
 </section>
 
 {% endblock content %}

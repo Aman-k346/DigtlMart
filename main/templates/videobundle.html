@@ -62,7 +62,12 @@ DigtlMart - Video Bundle
         </ul>
       </div>
       <div class="Bottom">
-        <a class="button" href="/checkout">Buy now</a>
+        {% if status == 'COMPLETED' %}
+    <a class="button" href="{{ download_link }}">Download now</a>
+{% else %}
+    <a class="button" href="/checkout">Buy now</a>
+{% endif %}
+
       </div>
     </div>
   </section>
@@ -233,13 +238,18 @@ DigtlMart - Video Bundle
           <li>EXCEL SHEETS FOR EVERY BUSINESS USE</li>
           <li>3,000+ MOTIVATIONAL REELS</li>
           <li>COURSES FOR FREE</li>
-          <li>1,500+ CANVA POSTS BUNDLE</li>
+          <li id="ScrollHere">1,500+ CANVA POSTS BUNDLE</li>
           <li>1,000+ SOCIAL POSTERS</li>
           <li>675GB+ GRAPHICS BUNDLE</li>
         </ul>
       </div>
       <div class="Button">
+        {% if status == 'COMPLETED' %}
+        <a class="button" href="{{ download_link }}">Download now</a>
+    {% else %}
         <a class="button" href="/checkout">Buy now</a>
+    {% endif %}
+    
       </div>
     </div>
   </section>
@@ -398,7 +408,12 @@ DigtlMart - Video Bundle
           <h1 class="Title">THE CHOICE IS YOURS</h1>
           <h1 class="Title red">BE A WORTHY EDITOR!!</h1>
           <h1 class="Title" style="letter-spacing:0.3ch;">ONLY ₹149/-</h1>
+          {% if status == 'COMPLETED' %}
+          <a class="button" href="{{ download_link }}">Download now</a>
+      {% else %}
           <a class="button" href="/checkout">Buy now</a>
+      {% endif %}
+      
         </div>
       </div>
     </div>
