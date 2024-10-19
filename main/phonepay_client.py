@@ -20,8 +20,8 @@ def create_payment(amount, user_id):
 
     # Generate a unique merchantTransactionId (UUID with the last two characters removed)
     unique_transaction_id = str(uuid.uuid4())[:-2]
-    ui_redirect_url = "https://2bd7-103-5-134-168.ngrok-free.app/success"
-    s2s_callback_url = "https://2bd7-103-5-134-168.ngrok-free.app/callback"
+    ui_redirect_url = "https://digtlmart.com/success"
+    s2s_callback_url = "https://digtlmart.com/callback"
 
     # Create the payment request
     pay_page_request = PgPayRequest.pay_page_pay_request_builder(
