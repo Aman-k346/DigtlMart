@@ -5,15 +5,13 @@ from phonepe.sdk.pg.payments.v1.models.request.pg_pay_request import PgPayReques
 from phonepe.sdk.pg.payments.v1.payment_client import PhonePePaymentClient
 from phonepe.sdk.pg.env import Env
 from django.conf import settings
-import logging
 
-logger = logging.getLogger('payment')
 # Initialize the PhonePe client
 def get_phonepe_client():
     merchant_id = settings.PHONEPE_MERCHANT_ID
     salt_key = settings.PHONEPE_MERCHANT_KEY
     salt_index = 1
-    env = Env.UAT  # Using UAT environment
+    env = Env.PROD
     should_publish_events = True
     return PhonePePaymentClient(merchant_id, salt_key, salt_index, env, should_publish_events)
 
@@ -35,7 +33,6 @@ def create_payment(amount, user_id):
     )
 
     pay_page_response = phonepe_client.pay(pay_page_request)
-    logger.info(f"Payment page: {pay_page_response}")
     pay_page_url = pay_page_response.data.instrument_response.redirect_info.url
     merchant_transaction_id = pay_page_response.data.merchant_transaction_id 
 
