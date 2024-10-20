@@ -8,8 +8,8 @@ from django.conf import settings
 
 # Initialize the PhonePe client
 def get_phonepe_client():
-    merchant_id = settings.PHONEPE_MERCHANT_ID
-    salt_key = settings.PHONEPE_MERCHANT_KEY
+    merchant_id = "M22LZLZGUJZET"
+    salt_key = "d65786df-debf-4c8b-ad5f-1e00bf3745c6"
     salt_index = 1
     env = Env.PROD
     should_publish_events = True

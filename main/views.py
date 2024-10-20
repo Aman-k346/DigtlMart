@@ -12,7 +12,8 @@ from .models import Payment
 from main.phonepay_client import create_payment
 import json
 import base64
-
+import logging
+logger = logging.getLogger('payment')
 
 
 
@@ -113,18 +114,23 @@ def initiate_payment(request):
 
         try:
             userid = request.user.id
-            
+            logger.info(f"Initiating payment for amount: {amount}")
+
             # Check if the user already has a completed payment
             existing_payment = Payment.objects.filter(user_id=userid, status='COMPLETED').first()
             if existing_payment:
+                logger.info(f"Payment already exists for User {userid}. Redirecting to /bundle.")
+                
                 return redirect('/bundle?already_bought=true')
             
             # Check if there is a pending payment
             pending_payment = Payment.objects.filter(user_id=userid, status='PENDING').first()
             if pending_payment:
+                logger.info(f"Payment is still pending for User {userid}. Redirecting to payment page.")
                 pay_page_url = create_payment(amount, userid) 
                 pending_payment.merchant_transaction_id = pay_page_url[1] 
                 pending_payment.save()  
+                logger.info(f"Redirecting to payment page: {pay_page_url[0]}")
 
                 return redirect(pay_page_url[0])
 
@@ -136,6 +142,7 @@ def initiate_payment(request):
                 status='PENDING',
                 merchant_transaction_id=merchant_transaction_id,
             )
+            logger.info(f"Redirecting to payment page: {pay_page_url}")
 
             return redirect(pay_page_url)
 
@@ -145,15 +152,20 @@ def initiate_payment(request):
 
 @csrf_exempt
 def payment_callback(request):
-   
+    logger.info("Payment callback received a request.")
+
     if request.method == 'POST':
         try:
+            logger.info("Payment callback received a POST request.")
             body = request.body.decode('utf-8')
             x_verify_header_data = request.headers.get("X-VERIFY")
+            logger.info(f"Request Body: {body}")
 
             body_data = json.loads(body)
             encoded_response = body_data.get('response')
             decoded_response = base64.b64decode(encoded_response).decode('utf-8')
+            logger.info(f"Decoded response: {decoded_response}")
+            logger.info(f"X-VERIFY Header: {x_verify_header_data}")
 
             # Parse the decoded response to get payment details
             response_data = json.loads(decoded_response)
@@ -174,21 +186,25 @@ def payment_callback(request):
             )
 
             if status == 'COMPLETED':
+                logger.info(f"Payment successful: Transaction {transaction_id}. Updating payment entry.")
                 payment.status = 'COMPLETED'  # Update status to COMPLETED
                 payment.amount = amount
                 payment.transaction_id = transaction_id
                 payment.save()
-                
+                logger.info(f"Redirecting to success page for transaction {transaction_id}.")
                 return redirect('/success') 
 
             else:
                 reason = response_data.get('data', {}).get('reason', 'Payment failed due to unknown reasons.')
+                logger.warning(f"Payment failed: Transaction {transaction_id}. Reason: {reason}")
                 return redirect(f'/failed?reason={reason}')  
 
         except Exception as e:
+            logger.error(f"Error processing payment callback: {str(e)}")
             return JsonResponse({"status": "error", "message": str(e)}, status=500)
 
     elif request.method == 'GET':
+        logger.warning("Payment callback received a non-POST request")
         return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
 
     return JsonResponse({"status": "error", "message": "Unsupported request method"}, status=405)
@@ -197,7 +213,7 @@ def payment_callback(request):
 def success_page(request):
     if not request.user.is_authenticated:
         return redirect('Login')
-    
+    logger.info("Success page accessed.")
     userid = request.user.id  
 
     try:
@@ -205,6 +221,7 @@ def success_page(request):
 
         if payment.status != 'COMPLETED':
             reason = "Something went wrong."
+            logger.warning(f"Payment status for User {userid} is not completed. Reason: {reason}")
             return redirect(f'/failed?reason={reason}') 
         
         context = {
@@ -215,8 +232,10 @@ def success_page(request):
     
     except Payment.DoesNotExist:
         reason = "Something went wrong."
+        logger.error(f"Payment entry not found for User {userid}. Reason: {reason}")
         return redirect(f'/failed?reason={reason}')
     except Exception as e:
+        logger.error(f"Error processing success page: {str(e)}")
         return redirect(f'/failed?reason={str(e)}') 
 
 
